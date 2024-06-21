@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Календарь</title>
+
+  <!-- Basic Page Needs
+  ================================================== -->
+  <meta charset="utf-8">
+  <title>BodyViewMD</title>
+
+  <!-- Mobile Specific Metas
+  ================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Bootstrap App Landing Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="author" content="Themefisher">
+  <meta name="generator" content="Themefisher Small Apps Template v1.0">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+  
+  <!-- PLUGINS CSS STYLE -->
+  <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="plugins/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="plugins/slick/slick.css">
+  <link rel="stylesheet" href="plugins/slick/slick-theme.css">
+  <link rel="stylesheet" href="plugins/fancybox/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="plugins/aos/aos.css">
+
+  <!-- CUSTOM CSS -->
+  <link href="style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css'>
+
+<link rel="stylesheet" href="./style_cal.css">
+
+</head>
+
+<body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
+
+  <nav class="navbar main-nav navbar-expand-lg px-2 px-sm-0 py-2 py-lg-0">
+    
+    <div class="container"> 
+      <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo" width="300px"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="ti-menu"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Главная
+              <span><i class="ti-angle-down"></i></span>
+            </a>
+            <!-- Dropdown list -->
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item active" href="index.html">Главная</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown @@pages">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">О нас
+              <span><i class="ti-angle-down"></i></span>
+            </a>
+            <!-- Dropdown list -->
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item @@team" href="team.html">Команда</a></li>
+        <li><a class="dropdown-item @@team" href="index1.html">Календарь Виты</a></li>
+        <li><a class="dropdown-item @@team" href="index2.html">Календарь Сони</a></li>
+        <li><a class="dropdown-item @@team" href="index3.html">Календарь Вовы</a></li>
+        <li><a class="dropdown-item @@team" href="index4.html">Календарь Алана</a></li>
+  
+  
+              <li><a class="dropdown-item @@privacy" href="privacy-policy.html">Политика конфиденциальности</a></li>
+              <li><a class="dropdown-item @@faq" href="FAQ.html">Часто задаваемые вопросы</a></li>
+              <li><a class="dropdown-item" href="sign-in.html">Вход в личный кабинет</a></li>
+              <li><a class="dropdown-item" href="sign-up.html">Регистрация</a></li>
+  
+            </ul>
+          </li>
+          
+          <li class="nav-item @@contact">
+            <a class="nav-link" href="contact.html">Контакты</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    
+  </nav>
+
+
+  <div class="section-title">
+    <h2>Календарь Вовы</h2>
+  </div>
+
+<!-- partial:index.partial.html -->
+<script>
+  // fill the month table with column headings
+function day_title(day_name) {
+    document.write("<div class='c-cal__col'>" + day_name + "</div>");
+  }
+  // fills the month table with numbers
+function fill_table(month, month_length, indexMonth) {
+    day = 1;
+    // begin the new month table
+    document.write("<div class='c-main c-main-" + indexMonth + "'>");
+    //document.write("<b>"+month+" "+year+"</b>")
+
+    // column headings
+    document.write("<div class='c-cal__row'>");
+    day_title("Вс");
+    day_title("Пн");
+    day_title("Вт");
+    day_title("Ср");
+    day_title("Чт");
+    day_title("Пт");
+    day_title("Сб");
+    document.write("</div>");
+
+    // pad cells before first day of month
+    document.write("<div class='c-cal__row'>");
+    for (var i = 1; i < start_day; i++) {
+      if (start_day > 7) {
+      } else {
+        document.write("<div class='c-cal__cel'></div>");
+      }
+    }
+
+    // fill the first week of days
+    for (var i = start_day; i < 8; i++) {
+      document.write(
+        "<div data-day='2024-" +
+          indexMonth +
+          "-0" +
+          day +
+          "'class='c-cal__cel'><p>" +
+          day +
+          "</p></div>"
+      );
+      day++;
+    }
+    document.write("</div>");
+
+    // fill the remaining weeks
+    while (day <= month_length) {
+      document.write("<div class='c-cal__row'>");
+      for (var i = 1; i <= 7 && day <= month_length; i++) {
+        if (day >= 1 && day <= 9) {
+          document.write(
+            "<div data-day='2024-" +
+              indexMonth +
+              "-0" +
+              day +
+              "'class='c-cal__cel'><p>" +
+              day +
+              "</p></div>"
+          );
+          day++;
+        } else {
+          document.write(
+            "<div data-day='2024-" +
+              indexMonth +
+              "-" +
+              day +
+              "' class='c-cal__cel'><p>" +
+              day +
+              "</p></div>"
+          );
+          day++;
+        }
+      }
+      document.write("</div>");
+      // the first day of the next month
+      start_day = i;
+    }
+
+    document.write("</div>");
+  }
+</script>
+<header>
+  <div class="wrapper">
+    <div class="c-monthyear">
+    <div class="c-month">
+        <span id="prev" class="prev fa fa-angle-left" aria-hidden="true"></span>
+        <div id="c-paginator">
+          <span class="c-paginator__month">Январь</span>
+          <span class="c-paginator__month">Февраль</span>
+          <span class="c-paginator__month">Март</span>
+          <span class="c-paginator__month">Апрель</span>
+          <span class="c-paginator__month">Май</span>
+          <span class="c-paginator__month">Июнь</span>
+          <span class="c-paginator__month">Июль</span>
+          <span class="c-paginator__month">Август</span>
+          <span class="c-paginator__month">Сентбярь</span>
+          <span class="c-paginator__month">Октябрь</span>
+          <span class="c-paginator__month">Ноябрь</span>
+          <span class="c-paginator__month">Декабрь</span>
+        </div>
+        <span id="next" class="next fa fa-angle-right" aria-hidden="true"></span>
+      </div>
+      <span class="c-paginator__year">2024</span>
+    </div>
+    <div class="c-sort">
+      <a class="o-btn c-today__btn" href="javascript:;">Сегодня</a>
+    </div>
+  </div>
+</header>
+<div class="wrapper">
+  <div class="c-calendar">
+    <div class="c-calendar__style c-aside">
+      <a class="c-add o-btn js-event__add" href="javascript:;">Добавить заметку <span class="fa fa-plus"></span></a>
+      <div class="c-aside__day">
+        <span class="c-aside__num"></span> <span class="c-aside__month"></span>
+      </div>
+      <div class="c-aside__eventList">
+      </div>
+    </div>
+    <div class="c-cal__container c-calendar__style">
+      <script>
+      
+      // CAHNGE the below variable to the CURRENT YEAR
+      year = 2024;
+
+      // first day of the week of the new year
+      today = new Date("Январь 1, " + year);
+      start_day = today.getDay() + 1;
+      fill_table("Январь", 31, "01");
+      fill_table("Февраль", 28, "02");
+      fill_table("Март", 31, "03");
+      fill_table("Апрель", 30, "04");
+      fill_table("Май", 31, "05");
+      fill_table("Июнь", 30, "06");
+      fill_table("Июль", 31, "07");
+      fill_table("Август", 31, "08");
+      fill_table("Сентябрь", 30, "09");
+      fill_table("Октябрь", 31, "10");
+      fill_table("Ноябрь", 30, "11");
+      fill_table("Декабрь", 31, "12");
+      </script>
+    </div>
+  </div>
+
+  <div class="c-event__creator c-calendar__style js-event__creator">
+    <a href="javascript:;" class="o-btn js-event__close">Закрыть <span class="fa fa-close"></span></a>
+    <form id="addEvent">
+      <input placeholder="Название" type="text" name="name">
+      <input type="date" name="date">
+      <textarea placeholder="Комментарий" name="notes" cols="30" rows="10"></textarea>
+      <select name="tags">
+          <option value="event">Конференция</option>
+          <option value="important">Новая задача</option>
+          <option value="birthday">Срочная задача</option>
+          <option value="festivity">Проверка</option>
+        </select>
+    </form>
+    <br>
+    <a href="javascript:;" class="o-btn js-event__save">Сохранить <span class="fa fa-save"></span></a>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.cycle2/2.1.6/jquery.cycle2.core.min.js'></script><script  src="./script_cal.js"></script>
+
+<footer>
+  <div class="footer-main">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-12 m-md-auto align-self-center">
+          <div class="block">
+            <a href="index.html"><img src="images/logo11.png" width="150" alt="footer-logo"></a>
+            <!-- Social Site Icons -->
+            <ul class="social-icon list-inline" >
+				<a href="https://t.me/levisan0" target="_blank">
+					<img src="./images/Telegram.svg" alt="Tg Icon" width="55">
+				  </a>
+				  <a href="https://t.me/levisan0" target="_blank">
+					<img src="./images/Vkontakte.svg" alt="Tg Icon" width="55">
+				  </a>
+			  <a href="https://t.me/levisan0" target="_blank">
+				<img src="./images/Whatsapp.svg" alt="Tg Icon" width="55">
+			  </a>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-6 mt-5 mt-lg-0">
+          <div class="block-2">
+            <!-- heading -->
+            <h6>Мы</h6>
+            <!-- links -->
+            <ul>
+              <li><a href="team.html">Команда</a></li>
+              <!-- <li><a href="blog.html">Часто задаваемые вопросы</a></li> -->
+              <li><a href="FAQ.html">Ваши вопросы</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-6 mt-5 mt-lg-0">
+          <div class="block-2">
+            <!-- heading -->
+            <h6>Личный кабинет</h6>
+            <!-- links -->
+            <ul>
+              <li><a href="sign-up.html">Регистрация</a></li>
+              <li><a href="sign-in.html">Вход</a></li>
+              <!-- <li><a href="blog.html">Blog</a></li> -->
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-6 mt-5 mt-lg-0">
+          <div class="block-2">
+            <!-- heading -->
+            <h6>Компания</h6>
+            <!-- links -->
+            <ul>
+              <!-- <li><a href="career.html">Career</a></li> -->
+              <li><a href="contact.html">Контакты</a></li>
+              <!-- <li><a href="team.html">Investor</a></li> -->
+              <!-- <li><a href="privacy.html">Terms</a></li> -->
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-6 mt-5 mt-lg-0">
+          <div class="block-2">
+            <!-- heading -->
+            <h6>Документы</h6>
+            <!-- links -->
+            <ul>
+              <!-- <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="team.html">Team</a></li> -->
+              <li><a href="privacy-policy.html">Политика конфиденциальности</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center bg-dark py-4">
+    <small class="text-secondary">Copyright &copy; <script>document.write(new Date().getFullYear())</script>. Designed &amp; Developed by <a href="https://themefisher.com/">Vita</a></small class="text-secondary">
+  </div>
+
+	<!-- <div class="text-center bg-dark py-1">
+   <small> <p>Distributed By <a href="https://themewagon.com/">Themewagon</a></p></small class="text-secondary">
+  </div> -->
+</footer>
+
+
+  <!-- To Top -->
+  <div class="scroll-top-to">
+    <i class="ti-angle-up"></i>
+  </div>
+  
+  <!-- JAVASCRIPTS -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <script src="plugins/bootstrap/bootstrap.min.js"></script>
+  <script src="plugins/slick/slick.min.js"></script>
+  <script src="plugins/fancybox/jquery.fancybox.min.js"></script>
+  <script src="plugins/syotimer/jquery.syotimer.min.js"></script>
+  <script src="plugins/aos/aos.js"></script>
+  <!-- google map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgeuuDfRlweIs7D6uo4wdIHVvJ0LonQ6g"></script>
+  <script src="plugins/google-map/gmap.js"></script>
+  
+  <script src="script.js"></script>
+
+
+
+</body>
+</html>
